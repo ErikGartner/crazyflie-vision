@@ -47,6 +47,8 @@ TH_CAP = 55000
 
 YAW_CAP = 200
 
+COPTER_ID = 1
+
 sp_x = 0
 sp_y = 0
 sp_z = 100
@@ -143,6 +145,8 @@ rp_d = r_pid.Kd
 while True:
     try:
         data = kinect_conn.recv_json()
+        if data['id'] != COPTER_ID:
+            continue
         #print "Got data"
         #data = kinect_conn.recv()
 
