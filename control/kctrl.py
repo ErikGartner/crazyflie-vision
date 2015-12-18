@@ -36,6 +36,7 @@ import logging
 import signal
 import zmq
 import math
+import time
 
 from pid import PID, PID_RP
 import simplejson
@@ -53,9 +54,6 @@ sp_x = 0
 sp_y = 0
 sp_z = 100
 
-import zmq
-import time
-
 cmd = {
     "version": 1,
     "client_name": "N/A",
@@ -71,9 +69,9 @@ context = zmq.Context()
 client_conn = context.socket(zmq.PUSH)
 client_conn.connect("tcp://127.0.0.1:1212")
 
-kinect_conn = context.socket(zmq.PULL)
+kinect_conn = context.socket(zmq.SUB)
 kinect_conn.connect("tcp://127.0.0.1:7777")
-#kinect_conn.connect("tcp://172.16.13.90:1213")
+kinect_conn.setsockopt_string(zmq.SUBSCRIBE, "")
 
 midi_conn = context.socket(zmq.PULL)
 midi_conn.connect("tcp://192.168.0.2:1250")
