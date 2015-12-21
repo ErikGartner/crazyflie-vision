@@ -263,22 +263,22 @@ while True:
             else:
                  on_detect_counter += 1
         else:
-            #print "No detect"
-            cmd["ctrl"]["roll"] = 0
-            cmd["ctrl"]["pitch"] = 0
-            cmd["ctrl"]["thrust"] = 0
-            cmd["ctrl"]["yaw"] = 0
-            r_pid.reset_dt()
-            p_pid.reset_dt()
-            y_pid.reset_dt()
-            v_pid.reset_dt()
-            vv_pid.reset_dt()
-            #v
-            vv_pid.Integrator = 0.0
-            r_pid.Integrator = 0.0
-            p_pid.Integrator = 0.0
-            y_pid.Integrator = 0.0
-            on_detect_counter = 0
+            print "No detect"
+            # cmd["ctrl"]["roll"] = 0
+            # cmd["ctrl"]["pitch"] = 0
+            # cmd["ctrl"]["thrust"] = 0
+            # cmd["ctrl"]["yaw"] = 0
+            # r_pid.reset_dt()
+            # p_pid.reset_dt()
+            # y_pid.reset_dt()
+            # v_pid.reset_dt()
+            # vv_pid.reset_dt()
+            # #v
+            # vv_pid.Integrator = 0.0
+            # r_pid.Integrator = 0.0
+            # p_pid.Integrator = 0.0
+            # y_pid.Integrator = 0.0
+            # on_detect_counter = 0
         client_conn.send_json(cmd, zmq.NOBLOCK)
     except simplejson.scanner.JSONDecodeError as e:
         print e
