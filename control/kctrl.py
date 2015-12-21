@@ -252,10 +252,14 @@ while True:
                 #print "OUT: roll={:2.2f}, pitch={:2.2f}, thrust={:5.2f}, dt={:0.3f}, fps={:2.1f}".format(roll_corr, pitch_corr, thrust_sp, dt, 1/dt)
                 print "OUT: alt={:1.4f}, thrust={:5.2f}, dt={:0.3f}, fps={:2.1f}, speed={:+0.4f}".format(z, thrust_sp, dt, 1/dt, curr_velocity)
                 #print "dt={:0.3f}, fps={:2.1f}".format(dt, 1/dt)
-                cmd["ctrl"]["roll"] = roll_corr # math.copysign(roll_corr * roll_corr, roll_corr)
-                cmd["ctrl"]["pitch"] = pitch_corr # math.copysign(pitch_corr * pitch_corr, pitch_corr)
+                # cmd["ctrl"]["roll"] = roll_corr # math.copysign(roll_corr * roll_corr, roll_corr)
+                # cmd["ctrl"]["pitch"] = pitch_corr # math.copysign(pitch_corr * pitch_corr, pitch_corr)
+                # cmd["ctrl"]["thrust"] = thrust_sp * 100.0
+                # cmd["ctrl"]["yaw"] = yaw_out
+                cmd["ctrl"]["roll"] = 0 # math.copysign(roll_corr * roll_corr, roll_corr)
+                cmd["ctrl"]["pitch"] = 0 # math.copysign(pitch_corr * pitch_corr, pitch_corr)
                 cmd["ctrl"]["thrust"] = thrust_sp * 100.0
-                cmd["ctrl"]["yaw"] = yaw_out
+                cmd["ctrl"]["yaw"] = 0
             else:
                  on_detect_counter += 1
         else:
