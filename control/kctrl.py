@@ -71,7 +71,7 @@ client_conn.connect("tcp://127.0.0.1:1212")
 
 kinect_conn = context.socket(zmq.SUB)
 kinect_conn.connect("tcp://127.0.0.1:7777")
-kinect_conn.setsockopt_string(zmq.SUBSCRIBE, "")
+kinect_conn.setsockopt(zmq.SUBSCRIBE, "")
 
 midi_conn = context.socket(zmq.PULL)
 midi_conn.connect("tcp://192.168.0.2:1250")
